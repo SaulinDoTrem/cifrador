@@ -1,0 +1,20 @@
+{
+    "name": "saulin/cifrador",
+    "description": "Cifra texto em transposição colunar e depois cifra com Viginère utilizando a mesma senha, ao mesmo tempo que faz o caminho reverso",
+    "type": "project",
+    "license": "MIT",
+    "scripts": {
+        "execute": "php public/index.php"
+    },
+    "autoload": {
+        "psr-4": {
+            "Saulin\\Cifrador\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Saulo Klein Nery"
+        }
+    ],
+    "require": {}
+}
