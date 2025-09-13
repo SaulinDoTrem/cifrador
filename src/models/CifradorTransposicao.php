@@ -2,7 +2,6 @@
     namespace Saulin\Cifrador\models;
 
     class CifradorTransposicao implements ICifrador {
-        // TODO - ajustar cifra com espaços
         private $caracterDePreenchimento;
 
         public function __construct($caracterDePreenchimento) {

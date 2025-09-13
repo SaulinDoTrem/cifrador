@@ -1,11 +1,9 @@
 <?php
     namespace Saulin\Cifrador\views;
 
-    class LinhaComandoVisao {
-        public string $senha;
-        public string $texto;
-        public string $cifra;
+    use Saulin\Cifrador\models\LeitorArquivo;
 
+    class LinhaComandoVisao {
         public function exibirMenu(array $opcoes): void {
             $menuDetalhes = str_repeat('=', 3);
             echo PHP_EOL, $menuDetalhes, " Menu ", $menuDetalhes, PHP_EOL;
@@ -24,38 +22,43 @@
             return intval($opcao);
         }
 
-        public function lerSenha(): void {
-            $this->senha = strtoupper($this->lerEntrada('Digite a senha: '));
+        public function lerSenha(): string {
+            return strtoupper($this->lerEntrada('Digite a senha: '));
         }
 
-        public function lerTexto(): void {
-            $this->texto = strtoupper($this->lerEntrada('Digite o texto: '));
+        public function lerTexto(): string {
+            $nomeArquivo = $this->lerEntrada('Digite o nome do arquivo (caminho completo) que contém o texto desejado: ');
+            return LeitorArquivo::lerArquivo($nomeArquivo);
         }
 
-        public function lerCifra(): void {
-            $this->cifra = strtoupper($this->lerEntrada('Digite a cifra: '));
+        public function lerCifra(): string {
+            $nomeArquivo = $this->lerEntrada('Digite o nome do arquivo (caminho completo) que contém a cifra desejada: ');
+            return LeitorArquivo::lerArquivo($nomeArquivo);
         }
 
         public function exibirCifra(string $cifra): void {
-            echo PHP_EOL, "Cifra: $cifra", PHP_EOL;
+            $this->exibir("Cifra: '$cifra'");
         }
 
         public function exibirTextoDecifrado(string $texto): void {
-            echo PHP_EOL, "Texto decifrado: $texto", PHP_EOL;
-        }
-
-        public function exibirOpcaoInvalida(): void {
-            echo PHP_EOL, 'Opção inválida. Tente novamente.', PHP_EOL;
+            $this->exibir("Texto decifrado: '$texto'");
         }
 
         public function exibirSaindo(): void {
-            echo PHP_EOL, 'Saindo...', PHP_EOL;
+            $this->exibir('Saindo...');
         }
 
         private function lerEntrada($texto): string {
             echo PHP_EOL;
             $entrada = readline($texto);
-            // echo PHP_EOL;
             return $entrada;
+        }
+
+        public function exibirErro($mensagem): void {
+            $this->exibir("Erro: $mensagem");
+        }
+
+        private function exibir($mensagem): void {
+            echo PHP_EOL, $mensagem, PHP_EOL;
         }
     }
