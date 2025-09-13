@@ -2,15 +2,10 @@
     namespace Saulin\Cifrador\models;
 
     class CifradorTransposicao implements ICifrador {
-        // TODO - ajustar cifra com espaços
-        private $caracterDePreenchimento;
+        private $caractereDePreenchimento;
 
-        public function __construct($caracterDePreenchimento) {
-            $this->setCaracterDePreenchimento($caracterDePreenchimento);
-        }
-
-        public function setCaracterDePreenchimento($caracter): void {
-            $this->caracterDePreenchimento = $caracter;
+        public function __construct($caractereDePreenchimento) {
+            $this->caractereDePreenchimento = $caractereDePreenchimento;
         }
 
         public function cifrar($texto, $senha): string {
@@ -39,7 +34,7 @@
                 $texto .= $matriz[($i % $tamanhoSenha)]['letras'][($i / $tamanhoSenha) + 1];
             }
 
-            return str_replace($this->caracterDePreenchimento, '', $texto);
+            return str_replace($this->caractereDePreenchimento, '', $texto);
         }
 
 
@@ -61,7 +56,7 @@
             $palavrasAdicionadas = 0;
             do {
                 $textoParte = substr($texto, $offset, $tamanhoSenha);
-                $this->completarComCaracterDePreenchimento($textoParte, $tamanhoSenha);
+                $this->completarComCaractereDePreenchimento($textoParte, $tamanhoSenha);
                 $arrayTextoParte = str_split($textoParte);
     
                 for ($i = 0; $i < $tamanhoSenha; $i++) {
@@ -74,10 +69,10 @@
             return $matriz;
         }
 
-        private function completarComCaracterDePreenchimento(&$texto, $tamanhoSenha): void {
+        private function completarComCaractereDePreenchimento(&$texto, $tamanhoSenha): void {
             $tamanhoTexto = strlen($texto);
             if ($tamanhoTexto < $tamanhoSenha) {
-                $texto .= str_repeat($this->caracterDePreenchimento, $tamanhoSenha - $tamanhoTexto);
+                $texto .= str_repeat($this->caractereDePreenchimento, $tamanhoSenha - $tamanhoTexto);
             }
         }
 

@@ -1,5 +1,6 @@
 {
     "name": "saulin/cifrador",
+    "version": "1.0.0",
     "description": "Cifra texto em transposição colunar e depois cifra com Viginère utilizando a mesma senha, ao mesmo tempo que faz o caminho reverso",
     "type": "project",
     "license": "MIT",
