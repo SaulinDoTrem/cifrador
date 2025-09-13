@@ -4,9 +4,9 @@
     use Saulin\Cifrador\models\LeitorArquivo;
 
     class LinhaComandoVisao {
-        public function exibirMenu(array $opcoes): void {
+        public function exibirMenu(string $nomeMenu, array $opcoes): void {
             $menuDetalhes = str_repeat('=', 3);
-            echo PHP_EOL, $menuDetalhes, " Menu ", $menuDetalhes, PHP_EOL;
+            echo PHP_EOL, $menuDetalhes, " $nomeMenu ", $menuDetalhes, PHP_EOL;
             foreach ($opcoes as $i => $opcao) {
                 echo $i, ") $opcao", PHP_EOL;
             }
@@ -27,11 +27,19 @@
         }
 
         public function lerTexto(): string {
+            return $this->lerEntrada('Digite o texto: ');
+        }
+
+        public function lerCifra(): string {
+            return $this->lerEntrada('Digite a cifra: ');
+        }
+
+        public function lerArquivoTexto(): string {
             $nomeArquivo = $this->lerEntrada('Digite o nome do arquivo (caminho completo) que contém o texto desejado: ');
             return LeitorArquivo::lerArquivo($nomeArquivo);
         }
 
-        public function lerCifra(): string {
+        public function lerArquivoCifra(): string {
             $nomeArquivo = $this->lerEntrada('Digite o nome do arquivo (caminho completo) que contém a cifra desejada: ');
             return LeitorArquivo::lerArquivo($nomeArquivo);
         }

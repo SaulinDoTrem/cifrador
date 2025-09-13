@@ -9,6 +9,12 @@
             $partesCaminho = explode('.', $caminho);
             $extensao = array_pop($partesCaminho);
 
+            if (!is_file($caminho)) {
+                throw new LeituraArquivoException(
+                    'Não foi possível ler o conteúdo do arquivo porque ele não existe.'
+                );
+            }
+
             if ($extensao !== self::EXTENSAO_ARQUIVO) {
                 throw new LeituraArquivoException(
                     'Não foi possível ler o conteúdo do arquivo, apenas a extensão '. self::EXTENSAO_ARQUIVO .' é aceita.'
@@ -17,7 +23,7 @@
 
             if (!is_readable($caminho)) {
                 throw new LeituraArquivoException(
-                    'Não foi possível ler o conteúdo do arquivo ou ele não existe.'
+                    'Não foi possível ler o conteúdo do arquivo.'
                 );
             }
 
