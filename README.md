@@ -34,7 +34,8 @@ composer install
 3. **Testar via terminal**
 
 ```bash
-php index.php
+composer execute
+
 ```
 
 ## Testar cifragem:
