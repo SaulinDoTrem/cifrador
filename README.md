@@ -13,7 +13,8 @@ Mychelle Satyn da Conceição
 
 Para executar o projeto é necessário ter previamente instalado/configurado no ambiente: 
 
-- [PHP](https://www.php.net/) (versão 7.4 ou superior)
+- [PHP](https://www.php.net/) (Recomendado versão 7.4 ou superior)
+
 - [Composer](https://getcomposer.org/)
 
 ## Como executar
