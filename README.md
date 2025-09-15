@@ -4,9 +4,9 @@ Trabalho da disciplina de **Segurança e Auditoria de Sistemas** do curso de **B
 
 ## Autores
 
-Saulo
-Otávio
-Mychelle Satyn da Conceição
+- Saulo Klein Nery
+- Otávio Mendonça da Costa.
+- Mychelle Satyn da Conceição.
 
 ## Ambiente de desenvolvimento
 
@@ -35,36 +35,34 @@ composer install
 
 ```bash
 composer execute
-
 ```
 
-## Testar cifragem:
+## Testar cifragem com texto:
 
 - Escolha a opção 1 (Cifrar com texto);
 - Defina uma senha:
 - Digite um texto (Aceita maiúsculas, minusculas e espaços);
 - Anote a cifra gerada;
 
-## Testar a decifragem:
+## Testar a decifragem com texto:
 
 - Escolha a opção 3 (Decifrar com texto);
-- Defina uma senha;
-- Cole a cifra anotada anteriormente;
+- Digite a senha;
+- Digite a cifra anotada anteriormente;
 - Confirme se o texto original foi recuperado;
+- Caso deseje alterar a senha vai na opção 5 (Alterar senha);
 
-4. **Testar com arquivo**
+## Testar cifragem com arquivo:
 
-## Testar cifragem:
-
-- Edite o arquivo texto.txt na raiz do projeto;
+- Crie o arquivo texto.txt;
 - Escolha a opção 2 (Cifrar com arquivo);
 - Digite a senha desejada;
 - Digite o caminho completo do arquivo texto.txt (Ex:C:\Users\myche\OneDrive\Documentos\SegurancaAuditoria\cifrador\texto.txt);
-- A cifra será exibida e deve ser salva em no arquivo cifra.txt na raiz do projeto;
+- A cifra será exibida e deve ser salva em no arquivo com o nome cifra.txt;
 
-## Testar a decifragem:
+## Testar a decifragem com arquivo:
 
 - Escolha a opção 4 (Decifrar com arquivo);
-- Digite a mesma senha;
+- Digite a senha correspondente;
 - Digite o caminho completo do arquivo cifra.txt (Ex:C:\Users\myche\OneDrive\Documentos\SegurancaAuditoria\cifrador\cifra.txt);
 - Confirme se o texto original foi recuperado;

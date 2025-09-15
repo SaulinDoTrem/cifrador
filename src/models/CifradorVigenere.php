@@ -7,14 +7,9 @@
         private array $alfabeto;
         private int $qtdAlfabeto;
         private array $matriz;
-        //private string $acentos = 'áàâãäéèêëíìîïóòôõöúùûüçñÁÀÂÃÄÉÈÊËÍÌÎÏÓÒÔÕÖÚÙÛÜÇÑ';
-        //private string $pontuacao = '.,;:!?-()"\'';
 
         public function __construct($caractereDePreenchimento) {
-            $this->alfabeto = array_merge(range('A', 'Z'), range('a', 'z'), [' ', $caractereDePreenchimento],   
-            //mb_str_split($acentos, 1, 'UTF-8'),
-            //mb_str_split($pontuacao, 1, 'UTF-8')
-            );
+            $this->alfabeto = array_merge(range('A', 'Z'), range('a', 'z'), [' ', $caractereDePreenchimento],);
             $this->qtdAlfabeto = count($this->alfabeto);
             $this->matriz = $this->gerarMatrizVigenere();
         }
