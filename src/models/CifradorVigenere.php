@@ -9,7 +9,7 @@
         private array $matriz;
 
         public function __construct($caractereDePreenchimento) {
-            $this->alfabeto = array_merge(range('A', 'Z'), range('a', 'z'), [' ', $caractereDePreenchimento]);
+            $this->alfabeto = array_merge(range('A', 'Z'), range('a', 'z'), [' ', $caractereDePreenchimento],);
             $this->qtdAlfabeto = count($this->alfabeto);
             $this->matriz = $this->gerarMatrizVigenere();
         }

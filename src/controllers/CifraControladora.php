@@ -126,12 +126,12 @@
                     $this->visao->exibirMenu('Menu', $this->opcoes);
                     $opcaoEscolhida = $this->visao->lerOpcao(self::OPCAO_INVALIDA);
                     $this->executarOpcaoEscolhida($opcaoEscolhida);
-                    sleep(1);
                 } catch (LeituraArquivoException $e) {
                     $this->visao->exibirErro($e->getMessage());
                 } catch (Throwable $e) {
                     $this->visao->exibirErro('Houve um erro inesperado!');
                 }
+                 sleep(1);
             }
         }
     }
