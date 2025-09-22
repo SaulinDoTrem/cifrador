@@ -38,12 +38,12 @@ class CifradorDES implements ICifrador{
         OPENSSL_RAW_DATA,
         $vetorInicializacao);
 
-    return $vetorInicializacao . $cifra;
+      return base64_encode($vetorInicializacao . $cifra);
     }
 
     public function decifrar($cifra, $senha): string {
         $chaveAjustada = $this->ajustarTamanhoChave($senha);
-        $dadosDecodificados = $cifra;
+        $dadosDecodificados = base64_decode($cifra,true);
         $vetorIniTamanho = openssl_cipher_iv_length($this->metodo);
 
         $vetorInicializacao = substr($dadosDecodificados, 0, $vetorIniTamanho);
