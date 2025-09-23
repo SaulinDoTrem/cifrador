@@ -3,7 +3,7 @@
 namespace Saulin\Cifrador\models;
 
 class CifradorDES implements ICifrador{
-    private string $metodo = 'des-cbc';
+    private const METODO_ENCRIPTACAO = 'des-cbc';
     private string $caractereDePrenchimento = '';
 
     public function __construct($caractereDePrenchimento) {
@@ -15,15 +15,16 @@ class CifradorDES implements ICifrador{
         $chaveAjustada = $chave;
 
         if (strlen($chaveAjustada) < $tamanhoChave) {
-        $chaveAjustada = str_pad($chaveAjustada, $tamanhoChave, $this->caractereDePrenchimento);
+            $chaveAjustada = str_pad($chaveAjustada, $tamanhoChave, $this->caractereDePrenchimento);
         } elseif (strlen($chaveAjustada) > $tamanhoChave) {
-        $chaveAjustada = substr($chaveAjustada, 0, $tamanhoChave); }
+            $chaveAjustada = substr($chaveAjustada, 0, $tamanhoChave); 
+        }
 
         return $chaveAjustada; 
     }
 
     private function iniciar(): string {
-        $vetorIniTamanho = openssl_cipher_iv_length($this->metodo);
+        $vetorIniTamanho = openssl_cipher_iv_length(self::METODO_ENCRIPTACAO);
         return openssl_random_pseudo_bytes($vetorIniTamanho);
     }
 
@@ -32,11 +33,12 @@ class CifradorDES implements ICifrador{
         $vetorInicializacao = $this->iniciar();
 
         $cifra = openssl_encrypt(
-        $texto,
-        $this->metodo,
-        $chaveAjustada,
-        OPENSSL_RAW_DATA,
-        $vetorInicializacao);
+            $texto,
+            self::METODO_ENCRIPTACAO,
+            $chaveAjustada,
+            OPENSSL_RAW_DATA,
+            $vetorInicializacao
+        );
 
       return base64_encode($vetorInicializacao . $cifra);
     }
@@ -44,17 +46,17 @@ class CifradorDES implements ICifrador{
     public function decifrar($cifra, $senha): string {
         $chaveAjustada = $this->ajustarTamanhoChave($senha);
         $dadosDecodificados = base64_decode($cifra,true);
-        $vetorIniTamanho = openssl_cipher_iv_length($this->metodo);
+        $vetorIniTamanho = openssl_cipher_iv_length(self::METODO_ENCRIPTACAO);
 
         $vetorInicializacao = substr($dadosDecodificados, 0, $vetorIniTamanho);
         $cifraPura = substr($dadosDecodificados, $vetorIniTamanho);
 
         $texto = openssl_decrypt(
-        $cifraPura,
-        $this->metodo,
-        $chaveAjustada,
-        OPENSSL_RAW_DATA,
-        $vetorInicializacao
+            $cifraPura,
+            self::METODO_ENCRIPTACAO,
+            $chaveAjustada,
+            OPENSSL_RAW_DATA,
+            $vetorInicializacao
         );
 
         return $texto;
