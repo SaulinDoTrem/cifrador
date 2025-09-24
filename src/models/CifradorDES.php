@@ -3,7 +3,7 @@
 namespace Saulin\Cifrador\models;
 
 class CifradorDES implements ICifrador{
-    private const METODO_ENCRIPTACAO = 'des-cbc';
+    private const METODO_ENCRIPTACAO = 'des-ede-cbc';
     private string $caractereDePrenchimento = '';
 
     public function __construct($caractereDePrenchimento) {
@@ -40,7 +40,7 @@ class CifradorDES implements ICifrador{
             $vetorInicializacao
         );
 
-      return base64_encode($vetorInicializacao . $cifra);
+        return base64_encode($vetorInicializacao . $cifra);
     }
 
     public function decifrar($cifra, $senha): string {

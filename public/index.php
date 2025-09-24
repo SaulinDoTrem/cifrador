@@ -7,7 +7,7 @@
     use Saulin\Cifrador\models\CifradorDES;
     use Saulin\Cifrador\views\LinhaComandoVisao;
 
-    error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
+    error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE & ~E_DEPRECATED);
 
     $caractereDePreenchimento = '*';
     $visao = new LinhaComandoVisao();
