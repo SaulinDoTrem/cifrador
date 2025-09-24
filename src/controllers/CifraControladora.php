@@ -1,5 +1,6 @@
 <?php 
     namespace Saulin\Cifrador\controllers;
+    use Saulin\Cifrador\exceptions\CifradorException;
     use Saulin\Cifrador\exceptions\LeituraArquivoException;
     use Saulin\Cifrador\models\ICifrador;
     use Saulin\Cifrador\views\LinhaComandoVisao;
@@ -126,7 +127,7 @@
                     $this->visao->exibirMenu('Menu', $this->opcoes);
                     $opcaoEscolhida = $this->visao->lerOpcao(self::OPCAO_INVALIDA);
                     $this->executarOpcaoEscolhida($opcaoEscolhida);
-                } catch (LeituraArquivoException $e) {
+                } catch (LeituraArquivoException|CifradorException $e) {
                     $this->visao->exibirErro($e->getMessage());
                 } catch (Throwable $e) {
                     $this->visao->exibirErro('Houve um erro inesperado!');

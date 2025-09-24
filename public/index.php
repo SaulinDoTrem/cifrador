@@ -2,6 +2,7 @@
     require __DIR__.'/../vendor/autoload.php';
 
     use Saulin\Cifrador\controllers\CifraControladora;
+    use Saulin\Cifrador\models\CifradorAES;
     use Saulin\Cifrador\models\CifradorTransposicao;
     use Saulin\Cifrador\models\CifradorVigenere;
     use Saulin\Cifrador\models\CifradorDES;
@@ -14,7 +15,8 @@
     $cifradores = [
         new CifradorTransposicao($caractereDePreenchimento),
         new CifradorVigenere($caractereDePreenchimento),
-        new CifradorDES($caractereDePreenchimento)
+        new CifradorDES(),
+        new CifradorAES()
     ];
     $controladora = new CifraControladora($cifradores, $visao);
     $controladora->rodar();

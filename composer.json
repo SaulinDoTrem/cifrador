@@ -14,7 +14,14 @@
     },
     "authors": [
         {
-            "name": "Saulo Klein Nery"
+            "name": "Saulo Klein Nery",
+            "email": "saulokn@outlook.com"
+        },
+        {
+            "name": "Mychelle Satyn da Conceição"
+        },
+        {
+            "name": "Otávio Mendonça da Costa"
         }
     ],
     "require": {}
