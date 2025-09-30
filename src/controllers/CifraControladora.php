@@ -44,6 +44,9 @@
             $texto = $this->texto;
             foreach ($this->cifradores as $cifrador) {
                 $texto = $cifrador->cifrar($texto, $this->senha);
+                
+               $nomeCifrador = basename(str_replace('\\', '/', get_class($cifrador)));
+               $this->visao->exibirProcessoCifragem($nomeCifrador, $texto);
             }
             return $texto;
         }

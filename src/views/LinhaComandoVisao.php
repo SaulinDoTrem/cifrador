@@ -52,6 +52,13 @@
             $this->exibir("Texto decifrado: '$texto'");
         }
 
+        public function exibirProcessoCifragem(string $nomeCifrador, string $resultado): void {
+            $this->exibir("=== Processo de Cifragem ===");
+            $this->exibir("Cifrador: $nomeCifrador");
+            $this->exibir("Texto cifrado: '$resultado'");
+            $this->exibir(str_repeat('-', 30));
+        }
+
         public function exibirSaindo(): void {
             $this->exibir('Saindo...');
         }
